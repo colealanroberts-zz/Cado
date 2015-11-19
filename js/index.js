@@ -6,7 +6,7 @@ $(function() {
         closeBtn = $('.settings__btn-close');
 
     // Global vars
-    var c, 
+    var c,
         cur,
         userCurrency;
 
@@ -49,7 +49,7 @@ $(function() {
         // Get selected text and output to Status
         var currencyType = $('#user-currency :selected').text();
         statusType.text(currencyType);
-        
+
         $.getJSON('https://api.bitcoinaverage.com/ticker/' + tickerCurrency + '/', function(data) {
             // console.log(data);
             var curLower = cur.toLowerCase();
@@ -192,7 +192,7 @@ $(function() {
     }
 
     init();
-    
+
     // run getCurrentPrices as specified by the LocalStorage obj
     setInterval(function() {
         getCurrentPrices();
