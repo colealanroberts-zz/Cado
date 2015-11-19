@@ -7,7 +7,6 @@ $(function() {
 
     // Global vars
     var c,
-        cur,
         userCurrency;
 
     userCurrency = localStorage.getItem('userCurrency');
@@ -41,7 +40,8 @@ $(function() {
     };
 
     // get prices
-    function getCurrentPrices(currency) {
+    function getCurrentPrices() {
+
         var statusPrice = $('.status__price'),
             statusType = $('.status__type'),
             tickerCurrency = cur.toUpperCase();
@@ -111,7 +111,7 @@ $(function() {
         c = selectedCurrency.val();
         cur = c;
         localStorage.setItem('userCurrency', cur);
-        getCurrentPrices(cur);
+        getCurrentPrices();
     }
 
     function getCurrency() {
@@ -120,11 +120,11 @@ $(function() {
             cur = 'usd';
             selectedCurrency.val(cur);
             localStorage.setItem('userCurrency', cur);
-            getCurrentPrices(cur);
+            getCurrentPrices();
         } else {
             cur = userCurrency;
             selectedCurrency.val(cur);
-            getCurrentPrices(cur);
+            getCurrentPrices();
         }
     }
 
