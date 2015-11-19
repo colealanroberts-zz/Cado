@@ -7,6 +7,7 @@ $(function() {
 
     // Global vars
     var c,
+        cur,
         userCurrency;
 
     userCurrency = localStorage.getItem('userCurrency');
@@ -133,8 +134,8 @@ $(function() {
 
         // Detect if the user has a retina device
         // If the user does then double the circle width and then scale the canvas using css
-        var retina = isRetinaDisplay();
-        var res;
+        var retina = isRetinaDisplay(),
+            res;
 
         if (retina === true) {
             res = 260 * 2;
