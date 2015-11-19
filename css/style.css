@@ -12,7 +12,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: "Proxima Nova", "HelvticaNeue", "Arial", sans-serif;
+  font-family: "Montserrat", "HelvticaNeue", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased; }
 
 a {
@@ -53,18 +53,17 @@ button,
   -webkit-transition: -webkit-transform, cubic-bezier(0.215, 0.61, 0.355, 1), 200ms;
   -moz-transition: -moz-transform, cubic-bezier(0.215, 0.61, 0.355, 1), 200ms;
   transition: transform, cubic-bezier(0.215, 0.61, 0.355, 1), 200ms;
-  -webkit-transition-delay: 200ms;
-  -moz-transition-delay: 200ms;
-  transition-delay: 200ms;
+  -webkit-transition-delay: 100ms;
+  -moz-transition-delay: 100ms;
+  transition-delay: 100ms;
   position: fixed;
   top: 0;
-  right: 0;
+  right: 40px;
   -webkit-transform: translateX(200px);
   -moz-transform: translateX(200px);
   -ms-transform: translateX(200px);
   -o-transform: translateX(200px);
   transform: translateX(200px);
-  padding: 10px;
   width: 160px;
   height: 100%;
   background: transparent; }
@@ -81,35 +80,57 @@ button,
     position: fixed;
     top: 30px;
     right: 40px;
-    -webkit-transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 200ms, -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
-    -moz-transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 200ms, -moz-transform cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
-    transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 200ms, transform cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
     -o-appearance: none;
     appearance: none;
-    cursor: pointer;
     border: 0;
     z-index: 9999;
     width: 24px;
     height: 24px;
-    background: none;
-    opacity: 0.5;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-image: url("../img/icon-settings3.svg");
-    background-position: center center; }
-    .settings__btn.active {
-      -webkit-transform: rotate(-360deg);
-      -moz-transform: rotate(-360deg);
-      -ms-transform: rotate(-360deg);
-      -o-transform: rotate(-360deg);
-      transform: rotate(-360deg); }
-    .settings__btn:hover {
-      opacity: 1; }
-    .settings__btn:focus {
-      outline: 0; }
+    background: none; }
+    .settings__btn-open {
+      -webkit-transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 200ms, -webkit-transform cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
+      -moz-transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 200ms, -moz-transform cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
+      transition: opacity cubic-bezier(0.215, 0.61, 0.355, 1) 200ms, transform cubic-bezier(0.215, 0.61, 0.355, 1) 500ms;
+      opacity: 0.5;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-image: url("../img/icon-settings3.svg");
+      background-position: center center; }
+      .settings__btn-open.active {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        opacity: 0; }
+      .settings__btn-open:hover {
+        opacity: 1; }
+      .settings__btn-open:focus {
+        outline: 0; }
+    .settings__btn-close:before, .settings__btn-close:after {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      content: "";
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: white; }
+    .settings__btn-close:before {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg); }
+    .settings__btn-close:after {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg); }
   .settings__select {
     position: relative; }
     .settings__select__input {
@@ -153,7 +174,13 @@ button,
   top: 50%;
   left: 50%;
   width: 260px;
-  height: 260px; }
+  height: 260px;
+  max-width: 240px;
+  max-height: 240px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .status canvas {
+      max-width: 100%;
+      max-height: 100%; } }
   .status.active {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -176,8 +203,8 @@ button,
     display: block; }
   .status__price {
     color: white;
-    font-size: 2.5em;
-    font-weight: 100; }
+    font-size: 2.25em;
+    font-weight: 400; }
   .status__type {
     top: 4px;
     position: relative;
@@ -197,4 +224,5 @@ button,
   bottom: 30px;
   left: 50%;
   color: rgba(255, 255, 255, 0.2);
-  font-size: 12px; }
+  font-size: 12px;
+  font-family: "Avenir", "Helvetica", sans-serif; }

@@ -1,12 +1,14 @@
 $(function() {
     // Global Elements
-    selectedCurrency = $('#user-currency');
+    var selectedCurrency = $('#user-currency');
 
-    var settingsBtn = $('.settings__btn'),
-        saveBtn     = $('.settings__btn-save');
+    var openBtn  = $('.settings__btn-open'),
+        closeBtn = $('.settings__btn-close');
 
     // Global vars
-    var c, cur, curLower, userCurrency;
+    var c, 
+        cur,
+        userCurrency;
 
     userCurrency = localStorage.getItem('userCurrency');
 
@@ -92,12 +94,19 @@ $(function() {
         });
     }
 
+    function isRetinaDisplay() {
+        if (window.devicePixelRatio > 1 || window.devicePixelRatio === 2) {
+            return true;
+        } else {
+            console.log('Non Retina');
+        }
+    }
+
     function saveCurrency() {
         c = selectedCurrency.val();
         cur = c;
         localStorage.setItem('userCurrency', cur);
-        getCurrentPrices(cur)
-        toggleMenu();
+        getCurrentPrices(cur);
     }
 
     function getCurrency() {
@@ -115,9 +124,20 @@ $(function() {
     function animateUpdateProgress() {
         var progressLoader = $('.loader');
 
+        // Detect if the user has a retina device
+        // If the user does then double the circle width and then scale the canvas using css
+        var retina = isRetinaDisplay();
+        var res;
+
+        if (retina === true) {
+            res = 260 * 2;
+        } else {
+            res = 260;
+        }
+
         progressLoader.circleProgress({
             value: 1.0,
-            size: 260,
+            size: res,
             thickness: 4,
             lineCap: 'round',
             emptyFill: 'rgba(255, 255, 255, 0.05)',
@@ -129,36 +149,49 @@ $(function() {
             },
             animationStartValue: 0.0
         });
+
+        console.log(res);
     }
 
     function toggleMenu() {
         var menu = $('.settings');
         menu.toggleClass('active');
-        saveBtn.hide();
     }
 
-    user = JSON.parse(localStorage.getItem('user'));
-
-    // run onload
-    getCurrency();
-    animateUpdateProgress();
-    getCurrentPrices();
-
-    $('.clear-local').click(function() {
-        localStorage.clear();
+    // Event Listeners
+    closeBtn.click(function() {
+        $(this).fadeOut(200);
+        openBtn.fadeIn(200);
+        openBtn.toggleClass('active');
+        toggleMenu();
     });
 
-    settingsBtn.click(function() {
+    openBtn.click(function() {
+        $(this).fadeOut(300);
         $(this).toggleClass('active');
+        closeBtn.fadeIn(200);
         toggleMenu();
     });
 
     selectedCurrency.change(function() {
+        closeBtn.fadeOut(200);
+        openBtn.fadeIn(200);
+        openBtn.toggleClass('active');
+        toggleMenu();
         saveCurrency();
     });
 
-    $('.status').addClass('active');
+    function init() {
+        closeBtn.hide();
+        isRetinaDisplay();
+        getCurrency();
+        animateUpdateProgress();
+        getCurrentPrices();
+        $('.status').addClass('active');
+    }
 
+    init();
+    
     // run getCurrentPrices as specified by the LocalStorage obj
     setInterval(function() {
         getCurrentPrices();

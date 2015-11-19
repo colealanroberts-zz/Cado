@@ -10,7 +10,7 @@ body
 
 body
     @include user-select(none)
-    font-family: 'Proxima Nova', 'HelvticaNeue', 'Arial', sans-serif
+    font-family: 'Montserrat', 'HelvticaNeue', 'Arial', sans-serif
     -webkit-font-smoothing: antialiased
 
 a
@@ -49,10 +49,9 @@ button,
 
 .settings
     @include transition(transform, $ease-out-cubic, 200ms)
-    @include transition-delay(200ms)
-    @include position(fixed, 0 0 null null)
+    @include transition-delay(100ms)
+    @include position(fixed, 0 40px null null)
     @include transform(translateX(200px))
-    padding: 10px
     width: 160px
     height: 100%
     background: transparent
@@ -66,29 +65,47 @@ button,
 
     &__btn
         @include position(fixed, 30px 40px null null)
-        @include transition(opacity $ease-out-cubic 200ms, transform $ease-out-cubic 500ms)
         @include appearance(none)
-        cursor: pointer
         border: 0
         z-index: 9999
         width: 24px
         height: 24px
         background: none
-        opacity: 0.5
-        background:
-            size: 100%
-            repeat: no-repeat
-            image: url('../img/icon-settings3.svg')
-            position: center center
 
-        &.active
-            @include transform(rotate(-360deg))
+        &-open        
+            @include transition(opacity $ease-out-cubic 200ms, transform $ease-out-cubic 500ms)
+            opacity: 0.5
+            background:
+                size: 100%
+                repeat: no-repeat
+                image: url('../img/icon-settings3.svg')
+                position: center center
 
-        &:hover
-            opacity: 1
+            &.active
+                @include transform(rotate(360deg))
+                opacity: 0
 
-        &:focus
-            outline: 0
+            &:hover
+                opacity: 1
+
+            &:focus
+                outline: 0
+
+        &-close
+            &:before,
+            &:after
+                @include position(absolute, 12px null null 0)
+                content: ''
+                display: block
+                width: 24px
+                height: 1px
+                background: white
+
+            &:before
+                @include transform(rotate(45deg))
+
+            &:after
+                @include transform(rotate(-45deg))
 
     &__select
         position: relative
@@ -121,6 +138,13 @@ button,
     left: 50%
     width: 260px
     height: 260px
+    max-width: 240px
+    max-height: 240px
+
+    @include hidpi(2)
+        canvas
+            max-width: 100%
+            max-height: 100%
 
     &.active
         @include transform(translate(-50%, -50%))
@@ -138,8 +162,8 @@ button,
 
     &__price
         color: white
-        font-size: 2.5em
-        font-weight: 100
+        font-size: 2.25em
+        font-weight: 400
 
     &__type
         top: 4px
@@ -154,4 +178,6 @@ button,
     @include transform(translateX(-50%))
     @include position(absolute, null null 30px 50%)
     color: rgba(white, 0.2)
-    font-size: 12px
+    font:
+        size: 12px
+        family: 'Avenir', 'Helvetica', sans-serif
