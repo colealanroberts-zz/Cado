@@ -161,22 +161,19 @@ $(function() {
     // Event Listeners
     closeBtn.click(function() {
         $(this).fadeOut(200);
-        openBtn.fadeIn(200);
-        openBtn.toggleClass('active');
+        openBtn.fadeIn(200).toggleClass('active');
         toggleMenu();
     });
 
     openBtn.click(function() {
-        $(this).fadeOut(300);
-        $(this).toggleClass('active');
+        $(this).fadeOut(300).toggleClass('active');
         closeBtn.fadeIn(200);
         toggleMenu();
     });
 
     selectedCurrency.change(function() {
         closeBtn.fadeOut(200);
-        openBtn.fadeIn(200);
-        openBtn.toggleClass('active');
+        openBtn.fadeIn(200).toggleClass('active');
         toggleMenu();
         saveCurrency();
     });
