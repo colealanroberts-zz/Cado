@@ -44,7 +44,7 @@ $(function() {
     function getCurrentPrices(currency) {
         var statusPrice = $('.status__price'),
             statusType = $('.status__type'),
-            tickerCurrency = cur.toUpperCase()
+            tickerCurrency = currency.toUpperCase();
 
         // Get selected text and output to Status
         var currencyType = $('#user-currency :selected').text();
@@ -116,7 +116,9 @@ $(function() {
 
     function getCurrency() {
         if (userCurrency === null || userCurrency < 0) {
+            console.log('Creating a new ls obj');
             cur = 'usd';
+            selectedCurrency.val(cur);
             localStorage.setItem('userCurrency', cur);
             getCurrentPrices(cur);
         } else {
