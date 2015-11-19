@@ -43,8 +43,13 @@ $(function() {
     // get prices
     function getCurrentPrices(currency) {
         var statusPrice = $('.status__price'),
-            tickerCurrency = cur.toUpperCase();
+            statusType = $('.status__type'),
+            tickerCurrency = cur.toUpperCase()
 
+        // Get selected text and output to Status
+        var currencyType = $('#user-currency :selected').text();
+        statusType.text(currencyType);
+        
         $.getJSON('https://api.bitcoinaverage.com/ticker/' + tickerCurrency + '/', function(data) {
             // console.log(data);
             var curLower = cur.toLowerCase();
@@ -183,7 +188,6 @@ $(function() {
         isRetinaDisplay();
         getCurrency();
         animateUpdateProgress();
-        getCurrentPrices();
         $('.status').addClass('active');
     }
 
