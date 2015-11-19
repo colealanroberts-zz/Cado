@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>C A D O</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1 class="logo">cado</h1>
+        <button href="" class="settings__btn"></button>
+        <div class="settings">
+            <div class="settings__select">
+                <div class="settings__list">
+                    <label for="" class="label">Currency</label>
+                    <div class="settings__select__input">
+                        <select name="" id="user-currency">
+                            <option value="aud">Australian Dollar</option>
+                            <option value="brl">Brazillian Real</option>
+                            <option value="cad">Canadian Dollar</option>
+                            <option value="cny">Chinese Yuan</option>
+                            <option value="eur">Euro</option>
+                            <option value="gbp">Great Britian Pound</option>
+                            <option value="hkd">Hong Kong Dollar</option>
+                            <option value="idr">Indian Rupee</option>
+                            <option value="ils">Israeli New Shekel</option>
+                            <option value="jpy">Japanese Yen</option>
+                            <option value="mxn">Mexico Peso</option>
+                            <option value="nok">Norwegian Krone</option>
+                            <option value="nzd">New Zealand Dollar</option>
+                            <option value="pln">Polish Zloty</option>
+                            <option value="ron">Romanian New Leu</option>
+                            <option value="rub">Russian Ruble</option>
+                            <option value="sek">Swedish Krona</option>
+                            <option value="sgd">Sudanese Pound</option>
+                            <option value="usd">US Dollar</option>
+                            <option value="zar">South African Rand</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="status">
+            <div class="loader"></div>
+            <div class="status__text">
+                <span class="status__price"></span>
+                <span class="status__type">current btc</span>
+            </div>
+        </div>
+        <span class="attribution">Data provided by <a href="https://bitcoinaverage.com/">bitcoinaverage.com</a></span>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="js/circle-progress.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,157 @@
+@import "bourbon"
+
+html,
+body
+    width: 100%
+    height: 100%
+    margin: 0 auto
+    @include linear-gradient(180deg, #101100, #081319)
+
+
+body
+    @include user-select(none)
+    font-family: 'Proxima Nova', 'HelvticaNeue', 'Arial', sans-serif
+    -webkit-font-smoothing: antialiased
+
+a
+    color: inherit
+    text-decoration: none
+    border-bottom: 1px dotted rgba(white, 0.1)
+
+a,
+select,
+button
+    &:focus
+        outline: 0
+
+a,
+button,
+.btn
+    cursor: pointer
+
+.label
+    color: white
+    text-transform: uppercase
+    font-size: 11px
+    margin-bottom: 6px
+    display: block
+    font-weight: 700
+    letter-spacing: 1px
+
+.logo
+    @include position(absolute, 30px null null 40px)
+    color: white
+    text-transform: uppercase
+    letter-spacing: 3px
+    margin: 0
+    font:
+        size: 18px
+
+.settings
+    @include transition(transform, $ease-out-cubic, 200ms)
+    @include transition-delay(200ms)
+    @include position(fixed, 0 0 null null)
+    @include transform(translateX(200px))
+    padding: 10px
+    width: 160px
+    height: 100%
+    background: transparent
+
+    &.active
+        @include transform(translateX(0px))
+
+    &__list
+        position: relative
+        top: 60px
+
+    &__btn
+        @include position(fixed, 30px 40px null null)
+        @include transition(opacity $ease-out-cubic 200ms, transform $ease-out-cubic 500ms)
+        @include appearance(none)
+        cursor: pointer
+        border: 0
+        z-index: 9999
+        width: 24px
+        height: 24px
+        background: none
+        opacity: 0.5
+        background:
+            size: 100%
+            repeat: no-repeat
+            image: url('../img/icon-settings3.svg')
+            position: center center
+
+        &.active
+            @include transform(rotate(-360deg))
+
+        &:hover
+            opacity: 1
+
+        &:focus
+            outline: 0
+
+    &__select
+        position: relative
+
+        &__input
+            position: relative
+            margin-bottom: 10px
+
+            &:after
+                @include position(absolute, 16px 16px null null)
+                @include triangle(12px, rgba(white, 0.2), down)
+                content: ''
+
+            select
+                @include appearance(none)
+                width: 100%
+                padding: 10px
+                font-weight: bold
+                color: rgba(white, 0.6)
+                background: none
+                border: 2px solid rgba(white, 0.2)
+                border-radius: 0
+
+.status
+    @include transform(translate(-50%, -40%))
+    @include transition(opacity $ease-in-out-cubic 600ms, transform $ease-in-out-cubic 600ms)
+    position: absolute
+    opacity: 0
+    top: 50%
+    left: 50%
+    width: 260px
+    height: 260px
+
+    &.active
+        @include transform(translate(-50%, -50%))
+        opacity: 1
+
+    &__text
+        @include transform(translate(-50%, -50%))
+        @include position(absolute, 50% null null 50%)
+        width: 100%
+
+    &__price,
+    &__type
+        text-align: center
+        display: block
+
+    &__price
+        color: white
+        font-size: 2.5em
+        font-weight: 100
+
+    &__type
+        top: 4px
+        position: relative
+        font-weight: bold
+        color: lighten(black, 40%)
+        text-transform: uppercase
+        font-size: 12px
+        letter-spacing: 2px
+
+.attribution
+    @include transform(translateX(-50%))
+    @include position(absolute, null null 30px 50%)
+    color: rgba(white, 0.2)
+    font-size: 12px
