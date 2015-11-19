@@ -44,7 +44,7 @@ $(function() {
     function getCurrentPrices(currency) {
         var statusPrice = $('.status__price'),
             statusType = $('.status__type'),
-            tickerCurrency = currency.toUpperCase();
+            tickerCurrency = cur.toUpperCase();
 
         // Get selected text and output to Status
         var currencyType = $('#user-currency :selected').text();
@@ -156,8 +156,6 @@ $(function() {
             },
             animationStartValue: 0.0
         });
-
-        console.log(res);
     }
 
     function toggleMenu() {
