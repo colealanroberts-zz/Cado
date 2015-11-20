@@ -52,7 +52,6 @@ $(function() {
         statusType.text(currencyType);
 
         $.getJSON('https://api.bitcoinaverage.com/ticker/' + tickerCurrency + '/', function(data) {
-            // console.log(data);
             var curLower = cur.toLowerCase();
             if (typeof curLower === 'undefined') {
                 console.log('Erroring!');
@@ -103,8 +102,6 @@ $(function() {
     function isRetinaDisplay() {
         if (window.devicePixelRatio > 1 || window.devicePixelRatio === 2) {
             return true;
-        } else {
-            console.log('Non Retina');
         }
     }
 
