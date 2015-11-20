@@ -97,7 +97,7 @@ button,
       opacity: 0.5;
       background-size: 100%;
       background-repeat: no-repeat;
-      background-image: url("../img/icon-settings3.svg");
+      background-image: url("../img/icon-settings.svg");
       background-position: center center; }
       .settings__btn-open.active {
         -webkit-transform: rotate(360deg);
